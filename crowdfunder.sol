@@ -1,8 +1,8 @@
 pragma solidity ^0.4.9;
 // perhaps if the version is set to 0.9 then the throw statements will be compiled?
- // Play account#2: 0x12B3aDc017574229b3fFF7835daeA12d5eA9ED0B
- // Play account#3: 0x9851207F5431345f4bAfa9ea40C3cE9f42cD2EA5
- // Play account#4: 0x22686E8FE2172625079dc4bC911336Cabc458AE6
+ // Play account#2: 0x12
+ // Play account#3: 0x98
+ // Play account#4: 0x22
  // contract address: 0x86ab9260cc9eb72d6d49a6249f2b57f8de3d2b8194ce826c752e91d575009106
 
 contract CrowdFunder {
@@ -175,12 +175,13 @@ modifier atEndOfLifecycle() {
     atEndOfLifecycle()
     {
         selfdestruct(msg.sender);
-        // creator received all unclaimed ether.
+      // creator receives all unclaimed ether.
     } // eo function removeContract
 
-    // function() { throw;}
+    // The fallback function. One per program allowed.
+    // function() { throw;}  // Throw is deprecated 
     function() public {
-        revert();
-    }
+        revert();   // must be 
+    } 
 
 }  // eo contract CrowdFunder
